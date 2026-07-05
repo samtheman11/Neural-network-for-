@@ -1,0 +1,15 @@
+import numpy as np
+import matplotlib.pyplot as plt
+def daily_pattern(hour):
+    """
+    This function given an hour of the day from 0 to 23 
+    returns a demand multiplier which is based on the time of day.
+    since the power demand is lower around night time and higher during the day,
+    this can be used to simulate the daily pattern of power demand.
+     """
+    clock_A = np.cos(2 * np.pi * (hour - 15) / 24) 
+    clock_B = np.cos(2 * np.pi * (hour - 8) / 12) 
+    shift = 1.1
+    scaler = 2.5
+    combined = clock_A + 0.5 * clock_B
+    return (combined/scaler) + shift # Normalize to a range of 0 to 1
