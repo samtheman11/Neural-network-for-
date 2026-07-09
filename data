@@ -1,15 +1,42 @@
 import numpy as np
 import matplotlib.pyplot as plt
-def daily_pattern(hour):
+def daily_pattern(hour):# 0 = midnight, 23 = 11pm
     """
     This function given an hour of the day from 0 to 23 
     returns a demand multiplier which is based on the time of day.
     since the power demand is lower around night time and higher during the day,
     this can be used to simulate the daily pattern of power demand.
      """
+    if hour < 0 or hour > 23: #Stops invalid input
+        raise ValueError("Hour must be between 0 and 23")
     clock_A = np.cos(2 * np.pi * (hour - 15) / 24) 
     clock_B = np.cos(2 * np.pi * (hour - 8) / 12) 
     shift = 1.1
     scaler = 2.5
     combined = clock_A + 0.5 * clock_B
     return (combined/scaler) + shift # Normalize to a range of 0 to 1
+
+def DayOfWeekMultiplier(day):#0=Monday, 1=Tuesday, 2=Wednesday, 3=Thursday, 4=Friday, 5=Saturday, 6=Sunday
+    """
+    Since power demand is lower on the weekends than on weekdays
+    due to less industrial and commerical usage, this returns a multiplier based off real data of the day of the week.
+    """
+    if day < 0 or day > 6: #Stops invalid input
+        raise ValueError("Day must be between 0 and 6")
+    else:
+        if day >= 5: #the weekend
+            return 0.85
+        else: return 1 # weekdays
+
+def DayOfYearMultiplier(day_of_year):#day of year 0-364 
+    """
+    This functions return a multiplier for the day of the year.
+    The coldest day is in January(0) and the Hottest day is in July(180)
+    """
+    # if day_of_year < 0 or day_of_year > 364: #Stops invalid input
+    #     raise ValueError("Day of year must be between 0 and 364")
+    # else:
+    return np.cos(2 * np.pi * (day_of_year - 180) / 365)
+days = np.arange(0, 364)
+plt.plot(days, [DayOfYearMultiplier(day) for day in days])
+plt.show()

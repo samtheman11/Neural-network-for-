@@ -1,1 +1,23 @@
 Log
+Day 1
+-daily_pattern
+    -made this function in order to replicate data and output a multiplier number correlated with time of
+     day
+    -less power is being using around night time and higher around day time as data suggest
+     [https://energymag.net/daily-energy-demand-curve/] 
+     [https://www.eia.gov/electricity/gridmonitor/dashboard/electric_overview/US48/US48]
+    -used sinusodial function in order to create deeps and peaks in the graph to replicate a graph
+     found online using real data
+    -
+-DayOfWeekMultiplier
+    -made this function for the purpose of replicating data and output a multiplier number correlated with day of week
+    -Used most recent data to support this 
+     [https://www.eia.gov/electricity/gridmonitor/dashboard/electric_overview/US48/US48]
+    -showed that is was lower on weekends so the multiplier number should be lower
+    -
+-DayOfYearMultiplier
+    -made this function for to replicate data and output a multiplier number correlated with the day of the year
+    -most energy is used during the hottest days and coldest days because of AC
+    
+     
+
