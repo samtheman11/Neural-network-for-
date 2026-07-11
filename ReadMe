@@ -15,9 +15,23 @@ Day 1
      [https://www.eia.gov/electricity/gridmonitor/dashboard/electric_overview/US48/US48]
     -showed that is was lower on weekends so the multiplier number should be lower
     -
+-simtemperature
+    -made this function for the purpose of replicating temperature data 
+     in order to determine the multiplier for day of year 
+    -also troubling me 
 -DayOfYearMultiplier
     -made this function for to replicate data and output a multiplier number correlated with the day of the year
     -most energy is used during the hottest days and coldest days because of AC
+     [https://www.researchgate.net/figureDaily-average-minimum-and-maximum-temperature-throughout-the-year_fig1_284098536]
+    -this is troubling me 
+-simdemand
+    -made this function to take an time in hours to collect all the data 
+     and generate demand
+    -am having lots of trouble with this
+    -fixed the trouble i set the switched variables and it worked 
+-dataset
+    -made this function to make a dataset
+
     
      
 

@@ -1,5 +1,9 @@
+from calendar import day_abbr, day_name
+from re import X
+
 import numpy as np
 import matplotlib.pyplot as plt
+Baseline = 1000  #Megawatts
 def daily_pattern(hour):# 0 = midnight, 23 = 11pm
     """
     This function given an hour of the day from 0 to 23 
@@ -33,10 +37,64 @@ def DayOfYearMultiplier(day_of_year):#day of year 0-364
     This functions return a multiplier for the day of the year.
     The coldest day is in January(0) and the Hottest day is in July(180)
     """
-    # if day_of_year < 0 or day_of_year > 364: #Stops invalid input
-    #     raise ValueError("Day of year must be between 0 and 364")
-    # else:
-    return np.cos(2 * np.pi * (day_of_year - 180) / 365)
-days = np.arange(0, 364)
-plt.plot(days, [DayOfYearMultiplier(day) for day in days])
-plt.show()
+    if day_of_year < 0 or day_of_year > 364: #Stops invalid input
+        raise ValueError("Day of year must be between 0 and 364")
+    else:
+        return np.cos(2 * np.pi * (day_of_year - 180) / 365)
+
+def sim_temperature(day_of_year):
+    """
+    This function simulates the temperature based on the day of the year.
+    The coldest day is in January(0) and the Hottest day is in July(180)
+    """
+    if day_of_year < 0 or day_of_year > 364: #Stops invalid input
+        raise ValueError("Day of year must be between 0 and 364")
+    else:
+        scaler = 15
+        shift = 70
+        noise = np.random.normal(0, 2) # Add some random noise to the temperature
+        return np.cos(2 * np.pi * (day_of_year - 180)/365)*scaler + shift + noise
+
+def sim_demand(num_hours):
+    """ 
+    This function uses a set number of hours given to then run through all of other functions
+    and then apply th multipliers to a baseline power output
+    """
+    demand_array = [] #array of demand data
+    # dis=0
+    for i in range(num_hours):
+        time = i%24
+        day = (i//24)%7 
+        demand = Baseline*daily_pattern(time)*DayOfWeekMultiplier(day)
+        noise = np.random.normal(0,2)
+        demand_array.append(demand+noise)
+        # dis+=demand
+        # if i != 0 and i % 23 == 0:
+        #     demand_array.append(dis+noise)
+        #     dis=0
+        
+def dataset(num_hours):
+    hours = []
+    days = []
+    demand = []
+    for i in range(num_hours):
+        hour = i % 24
+        day = (i//24)%7
+
+        hours.append(hour)
+        days.append(day)
+
+        noise = np.random.normal(0,10)
+        d = Baseline*daily_pattern(hour)*DayOfWeekMultiplier(day)
+        demand.append(d+noise)
+
+        X = np.column_stack([hours,days])
+        Y = np.array(demand)
+    return X,Y
+
+
+
+        
+
+
+
