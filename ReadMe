@@ -24,6 +24,7 @@ Day 1
     -most energy is used during the hottest days and coldest days because of AC
      [https://www.researchgate.net/figureDaily-average-minimum-and-maximum-temperature-throughout-the-year_fig1_284098536]
     -this is troubling me 
+    -looked long and hard to find information on how much energy is increased during temp increease couldnt find it so i used ai
 -simdemand
     -made this function to take an time in hours to collect all the data 
      and generate demand
