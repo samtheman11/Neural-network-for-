@@ -81,30 +81,32 @@ def sim_demand(num_hours):
         #     dis=0
         
 def dataset(num_hours):
-    hours = []
-    days = []
-    demand = []
-    temps=[]
+    hour_array = []
+    day_array = []
+    demand_array = []
+    temp_array=[]
     for i in range(num_hours):
         hour = i % 24
         day = (i//24)%7
         temp = sim_temperature((i//24)%365)
         
-        hours.append(hour)
-        days.append(day)
-        temps.append(temp)
+        hour_array.append(hour)
+        day_array.append(day)
+        temp_array.append(temp)
 
         noise = np.random.normal(0,10)
-        d = Baseline*daily_pattern(hour)*DayOfWeekMultiplier(day)
-        demand.append(d+noise)
+        d = Baseline*daily_pattern(hour)*DayOfWeekMultiplier(day)*DayOfYearMultiplier(temp)
+        demand_array.append(d+noise)
 
-        X = np.column_stack([hours,days,temp])
-        Y = np.array(demand)
+    X = np.column_stack([hour_array,day_array,temp_array])
+    Y = np.array(demand_array)
     return X,Y
+X,Y=dataset(128)
 
-
-
+print(np.shape(X))
+print(np.shape(Y))
         
+
 
 
 
