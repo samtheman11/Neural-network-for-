@@ -33,6 +33,10 @@ Day 1
     -fixed the trouble i set the switched variables and it worked 
 -dataset
     -made this function to make a dataset
+-Neural network
+    -Initialized all the weights and biases
+    -Relu function - https://www.geeksforgeeks.org/deep-learning/relu-activation-function-in-deep-learning/
+    -frwd used dot products to find the values for all the layers 
 
     
      
