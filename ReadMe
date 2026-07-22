@@ -1,5 +1,4 @@
 Log
-Day 1
 -daily_pattern
     -made this function in order to replicate data and output a multiplier number correlated with time of
      day
@@ -31,12 +30,18 @@ Day 1
      and generate demand
     -am having lots of trouble with this
     -fixed the trouble i set the switched variables and it worked 
+    -this was a test function and not needed anymore so i deleted it
 -dataset
     -made this function to make a dataset
 -Neural network
     -Initialized all the weights and biases
     -Relu function - https://www.geeksforgeeks.org/deep-learning/relu-activation-function-in-deep-learning/
     -frwd used dot products to find the values for all the layers 
+    -tested out frwd to see if it computes needed output
+    -loss used loss function to determine accuracy
+    -back propagation is very confusing
+    -made a back prop that computes but has a significantly higher loss
+
 
     
      
