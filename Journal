@@ -41,7 +41,14 @@ Log
     -loss used loss function to determine accuracy
     -back propagation is very confusing
     -made a back prop that computes but has a significantly higher loss
-
+    -finished the epoch loop but the weights and biases are creating arbitary loss numbers 
+    -the problem was that all the hidden values are 0 this is caused by all the Wih values to be negative
+    -not all wih is negative at start of training loop so its something inside there 
+    -did some digging the data needs to be standerized https://builtin.com/data-science/when-and-why-standardize-your-data 
+    -did it but need to change the axis because before it would sqaush it into one number
+    -fixed this the loss is almost good at it going up to .16 
+    -able to get number to go to .10 but this is only standirize data not real data
+    
 
     
      

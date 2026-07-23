@@ -1,9 +1,4 @@
-from calendar import c
-from calendar import day_abbr, day_name
-from re import X 
-from tempfile import tempdir
 import numpy as np
-import matplotlib.pyplot as plt
 
 class Data :
     def __init__(self,Baseline=1000):
@@ -83,9 +78,7 @@ class Data :
         X = np.column_stack([hour_array,day_array,temp_array])
         Y = np.array(demand_array)
         return X,Y
-   
-m1 = Data()
-print(m1.dataset(100))
+
 
 
 
