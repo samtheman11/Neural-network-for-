@@ -71,13 +71,14 @@ class Data :
             day_array.append(day)
             temp_array.append(temp)
 
-            noise = np.random.normal(0,10)
+            noise = np.random.normal(0,5)
             d = self.Baseline*self.daily_pattern(hour)*self.DayOfWeekMultiplier(day)*self.DayOfYearMultiplier(temp)
             demand_array.append(d+noise)
 
         X = np.column_stack([hour_array,day_array,temp_array])
         Y = np.array(demand_array)
         return X,Y
+        
 
 
 
